@@ -1,0 +1,129 @@
+
+{
+  "entities": [
+    {
+      "entity": {
+        "name": "orders",
+        "remoteName": "Orders",
+        "properties": [
+          {
+            "field": {
+              "name": "OrderID",
+              "type": "Edm.Int32",
+              "nullable": false,
+              "key": true,
+              "description": "This is the order ID",
+              "sample": "1"
+            }
+          },
+          {
+            "field": {
+              "name": "ShipName",
+              "type": "Edm.String",
+              "nullable": false,
+              "key": true,
+              "sample": "John Doe",
+              "maxLength": 40,
+			  "fixedLength": false
+            }
+          },
+          {
+            "field": {
+              "name": "ShipAddress",
+              "type": "Edm.String",
+              "nullable": false,
+              "key": false,
+              "sample": "Av Corrientes 300",
+              "maxLength": 60,
+			  "fixedLength": false
+            }
+          },
+          {
+            "field": {
+              "name": "OrderDate",
+              "type": "Edm.DateTime",
+              "nullable": true,
+              "key": false,
+              "sample": "Av Corrientes 300"
+            }
+          },
+          {
+            "field": {
+              "name": "Freight",
+              "type": "Edm.Decimal",
+              "nullable": true,
+              "key": false
+            }
+          },
+          {
+            "field": {
+              "name": "Price",
+              "type": "Edm.Double",
+              "nullable": true,
+              "key": false
+            }
+          },
+          {
+            "field": {
+              "name": "Priority",
+              "type": "Edm.Int16",
+              "nullable": true,
+              "key": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "entity": {
+        "name": "customers",
+        "remoteName": "Customers",
+        "properties": [
+          {
+            "field": {
+              "name": "CustomerID",
+              "type": "Edm.String",
+              "nullable": false,
+              "key": true,
+              "description": "This is the Customer ID",
+              "sample": "1",
+              "maxLength": 5,
+              "fixedLength": false
+            }
+          },
+          {
+            "field": {
+              "name": "CompanyName",
+              "type": "Edm.String",
+              "nullable": true,
+              "key": false,
+              "sample": "John Doe",
+              "maxLength": 40,
+			  "fixedLength": false
+            }
+          },
+          {
+            "field": {
+              "name": "ContactName",
+              "type": "Edm.String",
+              "nullable": true,
+              "key": false,
+              "maxLength": 30,
+			  "fixedLength": false
+            }
+          },
+          {
+            "field": {
+              "name": "ContactTitle",
+              "type": "Edm.String",
+              "nullable": true,
+              "key": false,
+			  "fixedLength": false,
+			  "maxLength":30
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
