@@ -56,7 +56,7 @@ schemas:
   - customers: |
        {"$schema":"http://json-schema.org/draft-04/schema#","edm.remoteName":"Customers","edm.name":"customers","additionalProperties":false,"type":"object","properties":{"CompanyName":{"edm.nullable":true,"edm.maxLength":40,"edm.name":"CompanyName","type":"string","edm.type":"Edm.String","edm.fixedLength":false,"edm.key":false},"CustomerID":{"edm.nullable":false,"edm.maxLength":5,"edm.name":"CustomerID","type":"string","edm.type":"Edm.String","edm.fixedLength":false,"edm.key":true},"ContactName":{"edm.nullable":true,"edm.maxLength":30,"edm.name":"ContactName","type":"string","edm.type":"Edm.String","edm.fixedLength":false,"edm.key":false},"ContactTitle":{"edm.nullable":true,"edm.maxLength":30,"edm.name":"ContactTitle","type":"string","edm.type":"Edm.String","edm.fixedLength":false,"edm.key":false}},"required":["CustomerID","CompanyName","ContactName","ContactTitle"]}
 
-/orders: 
+/orders:
   displayName: orders
   is: [orderby, top, skip, filter, expand, format, select, inlinecount]
   get:
@@ -150,8 +150,6 @@ schemas:
               }
             },
             "required": [
-              "OrderID",
-              "ShipName",
               "ShipAddress",
               "OrderDate",
               "Freight",
@@ -311,13 +309,6 @@ schemas:
                   "type": "integer"
                 }
               },
-              "required": [
-                "ShipAddress",
-                "OrderDate",
-                "Freight",
-                "Price",
-                "Priority"
-              ],
               "additionalProperties": false
             }
       responses:
@@ -325,7 +316,7 @@ schemas:
           body:
             application/json: ~
 
-/customers: 
+/customers:
   displayName: customers
   is: [orderby, top, skip, filter, expand, format, select, inlinecount]
   get:
@@ -395,7 +386,6 @@ schemas:
               }
             },
             "required": [
-              "CustomerID",
               "CompanyName",
               "ContactName",
               "ContactTitle"
@@ -517,11 +507,6 @@ schemas:
                   "type": "string"
                 }
               },
-              "required": [
-                "CompanyName",
-                "ContactName",
-                "ContactTitle"
-              ],
               "additionalProperties": false
             }
       responses:
