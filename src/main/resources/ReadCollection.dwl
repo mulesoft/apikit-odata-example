@@ -2,13 +2,13 @@
 %output application/java
 // This DataWeave generates a MySQL Select Query from your metadata
 
-// APIkit Odata Service puts a inbound property that contains the fields of your entity. It's a list of string (List<String>)
+// APIkit Odata Service puts an inbound property that contains the fields of your entity. It's a list of string (List<String>)
 %var entityFields = inboundProperties['odata.fields']
 
 // APIkit Odata Service puts your oData filters into 'http.query.params' inbound property
 %var filters = inboundProperties['http.query.params']
 
-// APIkit Odata Service puts a inbound property that contains the keys of your entity
+// APIkit Odata Service puts an inbound property that contains the keys of your entity
 %var keys = inboundProperties['odata.keyNames']
 
 // Generate the fields you need in the query. 

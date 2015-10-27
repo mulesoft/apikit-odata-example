@@ -7,12 +7,12 @@
 + [Model Scaffolding](#scaffolding)
 
 # License Agreement <a name="licenseagreement"/>
-Note that using this template is subject to the conditions of this [License Agreement](AnypointTemplateLicense.pdf).
+Note that using this example is subject to the conditions of this [License Agreement](AnypointTemplateLicense.pdf).
 Please review the terms of the license before downloading and using this template. In short, you are allowed to use the template for free with Mule ESB Enterprise Edition, CloudHub, or as a trial in Anypoint Studio.
 
 # Use Case <a name="usecase"/>
 
-This template is designed to serve as a starting point to create an OData API or a Custom DataGateway using APIKIT OData Extension.
+This example is designed to show how to create an OData API or a Custom DataGateway using APIKIT OData Extension.
 Note that all the required dependencies have been already included, and within your API directory you will find a `model.json` file, with an example a data model ready to be scaffolded.
 
 # Model Definition <a name="model"/>

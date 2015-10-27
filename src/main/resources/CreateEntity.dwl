@@ -2,7 +2,7 @@
 %output application/java
 // This DataWeave generates a MySQL Insert Query from your payload and metadata
 
-// APIkit Odata Service puts a inbound property that contains the entity's name 
+// APIkit Odata Service puts an inbound property that contains the entity's name 
 %var remoteEntityName = inboundProperties['odata.remoteEntityName']
 
 // Transform your payload into something like this: { myKey1: 'myValue1', myKey2: 'myValue2'}.
