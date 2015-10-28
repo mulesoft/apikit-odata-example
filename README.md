@@ -17,7 +17,7 @@ This example is based on [this template](https://github.com/mulesoft/apikit-odat
 
 # Model Definition <a name="model"/>
 
-In this example we are using the following JSON model:
+In this example we are using the following [JSON model](/src/main/api/model.json):
 
 
 ```javascript
@@ -152,7 +152,7 @@ In this example we are using the following JSON model:
 ```
 # Datasource <a name="datasource"/>
 
-For this example we used a simple MySQL database. In the root of the project you will find a SQL script that contains all the data you need to run this Data Gateway.
+For this example we used a simple MySQL database. In the root of the project you will find a [SQL script](example.sql) that contains all the data you need to run this Data Gateway.
 We suggest using MySQL Workbench 6.3 or later. Replace the properties in "mule-app.properties" to point to the correct database. 
 
 # Run the example <a name="run"/>
