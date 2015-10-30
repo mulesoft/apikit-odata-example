@@ -16,8 +16,6 @@
     		<mule.tools.version>1.1</mule.tools.version>
     		<apikit.version>2.0.0-BETA</apikit.version>
         	<apikit.odata.version>0.9.0</apikit.odata.version>
-	<munit.version>1.0.0</munit.version>
-    <mule.munit.support.version>3.7.0</mule.munit.support.version>
     </properties>
 
 	<build>
@@ -88,29 +86,7 @@
 					</execution>
 				</executions>
 			</plugin>
-		<plugin>
-                <groupId>com.mulesoft.munit.tools</groupId>
-                <artifactId>munit-maven-plugin</artifactId>
-                <version>${munit.version}</version>
-                <executions>
-                    <execution>
-                        <id>test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
-	<testResources>
-            <testResource>
-                <directory>src/test/munit</directory>
-            </testResource>
-        <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-        </testResources>
     </build>
 
 	<!-- Mule Dependencies -->
@@ -191,19 +167,7 @@
             <artifactId>mule-module-apikit-odata</artifactId>
             <version>${apikit.odata.version}</version>
      	</dependency>     
-	<dependency>
-            <groupId>com.mulesoft.munit</groupId>
-            <artifactId>mule-munit-support</artifactId>
-            <version>${mule.munit.support.version}</version>
-            <scope>test</scope>
-        </dependency>
-    <dependency>
-            <groupId>com.mulesoft.munit</groupId>
-            <artifactId>munit-runner</artifactId>
-            <version>${munit.version}</version>
-            <scope>test</scope>
-        </dependency>
-    <dependency>
+	    <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-extensions-support</artifactId>
             <version>${mule.version}</version>
