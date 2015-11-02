@@ -15,6 +15,10 @@ Please review the terms of the license before downloading and using this templat
 
 This example is based on [this template](https://github.com/mulesoft/apikit-odata-template) and is designed to show how to create an OData API or a Custom DataGateway using APIKIT OData Extension.
 
+# Supported Runtimes <a name="runtimes"/>
+
+This example runs on Mule +3.7.1. API Gateway runtimes are not yet supported.
+
 # Model Definition <a name="model"/>
 
 In this example we are using the following [JSON model](/src/main/api/model.json):

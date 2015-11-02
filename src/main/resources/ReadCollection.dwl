@@ -14,7 +14,7 @@
 // Generate the fields you need in the query. 
 // It checks for a select function in case you need less filters that you're actually exposing. 
 // If there is no select present, it just returns your fields defined in your metadata
-%var generateSqlFields = (select) -> ( ( ( ( ( select splitBy "," ) -- ( keys splitBy "," ) ++ ( keys splitBy "," ) unless select == null otherwise entityFields ) )  ) map "`$`" ) joinBy ", "
+%var generateSqlFields = (select) -> ( ( ( ( ( ( ( select splitBy "," ) -- ( keys splitBy "," ) ) ++ ( keys splitBy "," ) ) unless select == null otherwise entityFields ) )  ) map "`$`" ) joinBy ", "
 
 // APIkit Odata Service puts a inbound property that contains the table's name 
 %var remoteEntityName = inboundProperties['odata.remoteEntityName']
@@ -46,8 +46,8 @@
 ---
 "SELECT " ++ generateSqlFields(filters.select) ++ " FROM $remoteEntityName"
  ++ ( 
- 	(toSQLWhere(filters.filter))++
- 	(toSQLOrderBy(filters.orderby))++
+ 	(toSQLWhere(filters.filter)) ++
+ 	(toSQLOrderBy(filters.orderby)) ++
  	(toSQLSkipAndTop(filters.top, filters.skip))
  ) 
  
