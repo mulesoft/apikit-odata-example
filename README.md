@@ -204,6 +204,7 @@ The response will be:
 # Known Issues <a name="knownissues"/>
 
 1. **MySQL Driver is missing Error**
+ 
  If your example project does not find MySQL Driver, you need to update your Maven dependencies: 
   1. Mavenize your project (unless you have already imported it as a Maven-based Mule Project from pom.xml) 
   2. Right click on your project -> Maven Support in Studio -> Update Project Dependencies. 
