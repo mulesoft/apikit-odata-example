@@ -12,10 +12,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<mule.version>3.7.2</mule.version>
-    		<mule.tools.version>1.1</mule.tools.version>
-    		<apikit.version>1.7.3</apikit.version>
-        	<apikit.odata.version>0.9.1</apikit.odata.version>
+		<mule.version>3.8.0</mule.version>
+   		<mule.tools.version>1.1</mule.tools.version>
+   		<apikit.version>3.8.1-SNAPSHOT</apikit.version>
+       	<apikit.odata.version>1.0.0-SNAPSHOT</apikit.odata.version>
     </properties>
 
 	<build>
