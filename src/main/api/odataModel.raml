@@ -11,6 +11,7 @@ types:
         (odata.key): true
         (odata.nullable): false
         format: int32
+        required: false
       ShipName:
         type: string
         (odata.nullable): false
@@ -22,7 +23,7 @@ types:
         (odata.key): false
         maxLength: 60
       OrderDate:
-        type: datetime
+        type: date-only
         (odata.nullable): true
         (odata.key): false
       Freight:
@@ -35,6 +36,7 @@ types:
         type: number
         (odata.nullable): true
         (odata.key): false
+        format: float
       Priority:
         type: number
         (odata.nullable): true

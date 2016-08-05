@@ -9,10 +9,6 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
-    <http:listener-config name="api-httpListenerConfig" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
-    <apikit:config name="config" raml="api.raml" extensionEnabled="true" consoleEnabled="true" consolePath="console" doc:name="Router"/>
-    <!-- MySQL Configuration -->
-    <db:mysql-config name="MySQL_Configuration" host="${ds.db.host}" port="${ds.db.port}" user="${ds.db.user}" password="${ds.db.password}" database="${ds.db.database}" doc:name="MySQL Configuration" />
     <configuration defaultExceptionStrategy-ref="apiKitGlobalExceptionMapping" doc:name="Configuration" doc:description="Use as implicit default exception strategy." />
     <flow name="api-main">
         <http:listener config-ref="api-httpListenerConfig" path="/api/*" doc:name="HTTP"/>
@@ -269,7 +265,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <apikit:mapping statusCode="400">
             <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
             <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
-            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload" />
+            <set-payload value="{ &quot;message&quot;: &quot;#[exception.causeException.message]&quot; }" doc:name="Set Payload" />
         </apikit:mapping>
         <apikit:mapping statusCode="409">
             <apikit:exception value="com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException" />

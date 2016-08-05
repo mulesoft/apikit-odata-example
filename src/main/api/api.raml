@@ -56,12 +56,12 @@ resourceTypes:
 /orders:
   displayName: orders
   type: { collection: { model: model.orders } }
-  /orderId:
+  /OrderID_{OrderID}-ShipName_{ShipName}:
     displayName: order
     type: { member: { model: model.orders } }
 /customers:
   displayName: customers
   type: { collection: { model: model.customers } }
-  /customerId:
+  /{customersId}:
     displayName: customer
     type: { member: { model: model.customers } }
