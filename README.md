@@ -21,7 +21,8 @@ This example runs on Mule +3.8.0.
 
 # Model Definition <a name="model"/>
 
-In this example we are using the following [OData RAML Type model](/src/main/api/odata.raml):
+In this example we are using the following [OData RAML Type model](/src/main/api/odata.raml).
+
 The model must be defined as a `RAML Library`, where each `DataType` represents an `EntityModel`, like:
 
 ### Model
