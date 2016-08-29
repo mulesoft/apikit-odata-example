@@ -17,194 +17,44 @@ This example is based on [this template](https://github.com/mulesoft/apikit-odat
 
 # Supported Runtimes <a name="runtimes"/>
 
-This example runs on Mule +3.7.1. API Gateway runtimes are not yet supported.
+This example runs on Mule +3.8.0.
 
 # Model Definition <a name="model"/>
 
-In this example we are using the following [JSON model](/src/main/api/model.json):
+In this example we are using the following [OData RAML Type model](/src/main/api/odata.raml):
+The model must be defined as a `RAML Library`, where each `DataType` represents an `EntityModel`, like:
 
+### Model
 
-```javascript
-{
-  "entities": [
-    {
-      "entity": {
-        "name": "orders",
-        "remoteName": "Orders",
-        "properties": [
-          {
-            "field": {
-              "name": "OrderID",
-              "type": "Edm.Int32",
-              "nullable": false,
-              "key": true,
-              "description": "This is the order ID",
-              "sample": "1"
-            }
-          },
-          {
-            "field": {
-              "name": "ShipName",
-              "type": "Edm.String",
-              "nullable": false,
-              "key": true,
-              "sample": "John Doe",
-              "maxLength": 40,
-			  "fixedLength": false
-            }
-          },
-          {
-            "field": {
-              "name": "ShipAddress",
-              "type": "Edm.String",
-              "nullable": false,
-              "key": false,
-              "sample": "Av Corrientes 300",
-              "maxLength": 60,
-			  "fixedLength": false
-            }
-          },
-          {
-            "field": {
-              "name": "OrderDate",
-              "type": "Edm.DateTime",
-              "nullable": true,
-              "key": false,
-              "sample": "Av Corrientes 300"
-            }
-          },
-          {
-            "field": {
-              "name": "Freight",
-              "type": "Edm.Decimal",
-              "nullable": true,
-              "key": false
-            }
-          },
-          {
-            "field": {
-              "name": "Price",
-              "type": "Edm.Double",
-              "nullable": true,
-              "key": false
-            }
-          },
-          {
-            "field": {
-              "name": "Priority",
-              "type": "Edm.Int16",
-              "nullable": true,
-              "key": false
-            }
-          }
-        ]
-      }
-    },
-    {
-      "entity": {
-        "name": "customers",
-        "remoteName": "Customers",
-        "properties": [
-          {
-            "field": {
-              "name": "CustomerID",
-              "type": "Edm.String",
-              "nullable": false,
-              "key": true,
-              "description": "This is the Customer ID",
-              "sample": "1",
-              "maxLength": 5,
-              "fixedLength": false
-            }
-          },
-          {
-            "field": {
-              "name": "CompanyName",
-              "type": "Edm.String",
-              "nullable": true,
-              "key": false,
-              "sample": "John Doe",
-              "maxLength": 40,
-			  "fixedLength": false
-            }
-          },
-          {
-            "field": {
-              "name": "ContactName",
-              "type": "Edm.String",
-              "nullable": true,
-              "key": false,
-              "maxLength": 30,
-			  "fixedLength": false
-            }
-          },
-          {
-            "field": {
-              "name": "ContactTitle",
-              "type": "Edm.String",
-              "nullable": true,
-              "key": false,
-			  "fixedLength": false,
-			  "maxLength":30
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
+```raml
+#%RAML 1.0 Library
+uses:
+  odata: !include libraries/odata.raml
+
+types:
+  Employee:
+    properties:
+      id:
+        type: integer
+        (odata.key)
+      name:
+        type: string
 ```
-# Datasource <a name="datasource"/>
 
-For this example we used a simple MySQL database. In the root of the project you will find a [SQL script](example.sql) that contains all the data you need to run this Data Gateway.
-We suggest using MySQL Workbench 6.3 or later. Replace the properties in "mule-app.properties" to point to the correct database. 
+You must annotate at least one of the properties on each `Entity` by using the annotation `(odata.key)`.
 
-# Run the example <a name="run"/>
+The following annotations are optional for each property:
 
-In this example you do not need to run the scaffolder since the RAML and the flows are already generated, so just import the project into Studio and run your application. Then when you hit this endpoint 
-```javascript
-http://localhost:8081/api/odata.svc/$metadata
-```
-The response will be: 
-```javascript
-<?xml version='1.0' encoding='utf-8'?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
-    <edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
-        <Schema Namespace="odata2.namespace" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityType Name="customers">
-                <Key>
-                    <PropertyRef Name="CustomerID"/>
-                </Key>
-                <Property Name="CompanyName" Type="Edm.String" Nullable="true" MaxLength="40" FixedLength="false"/>
-                <Property Name="ContactName" Type="Edm.String" Nullable="true" MaxLength="30" FixedLength="false"/>
-                <Property Name="ContactTitle" Type="Edm.String" Nullable="true" MaxLength="30" FixedLength="false"/>
-                <Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="5" FixedLength="false"/>
-            </EntityType>
-            <EntityType Name="orders">
-                <Key>
-                    <PropertyRef Name="OrderID"/>
-                    <PropertyRef Name="ShipName"/>
-                </Key>
-                <Property Name="Freight" Type="Edm.Decimal" Nullable="true"/>
-                <Property Name="OrderDate" Type="Edm.DateTime" Nullable="true"/>
-                <Property Name="OrderID" Type="Edm.Int32" Nullable="false"/>
-                <Property Name="Price" Type="Edm.Double" Nullable="true"/>
-                <Property Name="Priority" Type="Edm.Int16" Nullable="true"/>
-                <Property Name="ShipAddress" Type="Edm.String" Nullable="false" MaxLength="60" FixedLength="false"/>
-                <Property Name="ShipName" Type="Edm.String" Nullable="false" MaxLength="40" FixedLength="false"/>
-            </EntityType>
-            <EntityContainer Name="ODataEntityContainer" m:IsDefaultEntityContainer="true">
-                <EntitySet Name="customers" EntityType="odata2.namespace.customers"/>
-                <EntitySet Name="orders" EntityType="odata2.namespace.orders"/>
-            </EntityContainer>
-        </Schema>
-    </edmx:DataServices>
-</edmx:Edmx>
-```
+- `(odata.nullable)`: bool
+- `(odata.precision)`: int
+- `(odata.scale)`: int
+
+There's an optional `(odata.remote)` annotation for the `Entity`'s, that allow you to provide the name of the `Entity` in the remote data source.
+
 # Known Issues <a name="knownissues"/>
 
 1. **MySQL Driver is missing Error**
- 
- If your example project does not find MySQL Driver, you need to update your Maven dependencies: 
-  1. Mavenize your project (unless you have already imported it as a Maven-based Mule Project from pom.xml) 
-  2. Right click on your project -> Maven Support in Studio -> Update Project Dependencies. 
+
+ If your example project does not find MySQL Driver, you need to update your Maven dependencies:
+  1. Mavenize your project (unless you have already imported it as a Maven-based Mule Project from pom.xml)
+  2. Right click on your project -> Maven Support in Studio -> Update Project Dependencies.
