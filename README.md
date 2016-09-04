@@ -4,8 +4,6 @@
 + [License Agreement](#licenseagreement)
 + [Use Case](#usecase)
 + [Model Definition](#model)
-+ [Datasource](#datasource)
-+ [Run the example](#run)
 
 # License Agreement <a name="licenseagreement"/>
 Note that using this example is subject to the conditions of this [License Agreement](AnypointTemplateLicense.pdf).
@@ -17,7 +15,7 @@ This example is based on [this template](https://github.com/mulesoft/apikit-odat
 
 # Supported Runtimes <a name="runtimes"/>
 
-This example runs on Mule +3.8.0.
+This example runs on Mule +3.8.1.
 
 # Model Definition <a name="model"/>
 
